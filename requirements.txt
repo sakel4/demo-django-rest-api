@@ -5,6 +5,7 @@ djangorestframework-simplejwt==5.5.1
 PyJWT==2.15.0
 django-cors-headers==4.9.0
 drf-recaptcha==4.0.3
+whitenoise==6.11.0
 
 # postgresql
 psycopg2-binary==2.9.13

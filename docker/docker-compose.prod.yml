@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    env_file:
+      - production.env
+    environment:
+      DJANGO_ENV: production
+      DJANGO_DEBUG: "false"
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import socket; socket.create_connection(('127.0.0.1', 8000), timeout=2).close()"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
