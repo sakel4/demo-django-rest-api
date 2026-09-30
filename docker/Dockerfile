@@ -15,7 +15,7 @@ COPY --chmod=755 docker/entrypoint.sh /usr/local/bin/entrypoint
 
 WORKDIR /app/api
 RUN mkdir -p /app/api/staticfiles \
-    && chown app:app /app/api/staticfiles
+    && chown app:app /app /app/api/staticfiles
 
 USER app
 
